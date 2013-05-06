@@ -32,9 +32,10 @@ int first=0;
     [self fetchTweets];
     if(first==0){
         self.hashtag=@"bieber";
+        first++;
     }
 	// Do any additional setup after loading the view, typically from a nib.
-    //self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    self.navigationItem.leftBarButtonItem = self->butt;
 
 //    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
 //    self.navigationItem.rightBarButtonItem = addButton;
@@ -115,6 +116,10 @@ int first=0;
         DetailViewController *detailController = segue.destinationViewController;
         detailController.detailItem = tweet;
     }
+    if ([[segue identifier] isEqualToString:@"showEntry"]) {
+        ViewController *detailController = segue.destinationViewController;
+        detailController.delegate = self;
+    }
 }
 
 - (void)fetchTweets
@@ -160,5 +165,11 @@ int first=0;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"by %@", name];
     
     return cell;
+}
+
+- (void)childViewControllerDidFinish:(NSString*)text {
+    self.hashtag=text;
+    [self fetchTweets];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 @end

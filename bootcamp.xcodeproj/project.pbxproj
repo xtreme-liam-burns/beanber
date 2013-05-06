@@ -20,6 +20,9 @@
 		A62E35311737F8D600BA8910 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62E352F1737F8D600BA8910 /* MainStoryboard_iPad.storyboard */; };
 		A62E35341737F8D600BA8910 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62E35331737F8D600BA8910 /* MasterViewController.m */; };
 		A62E35371737F8D600BA8910 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62E35361737F8D600BA8910 /* DetailViewController.m */; };
+		A62E3548173814DB00BA8910 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62E3546173814DA00BA8910 /* ViewController.m */; };
+		A62E354C17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = A62E354B17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png */; };
+		A62E354E17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = A62E354D17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +45,10 @@
 		A62E35331737F8D600BA8910 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		A62E35351737F8D600BA8910 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		A62E35361737F8D600BA8910 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		A62E3545173814DA00BA8910 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A62E3546173814DA00BA8910 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A62E354B17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_justinbieberclubicon_512x512.png; sourceTree = "<group>"; };
+		A62E354D17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_1justinbieberclubicon_512x512.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +68,8 @@
 		A62E35051737F8D600BA8910 = {
 			isa = PBXGroup;
 			children = (
+				A62E354D17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png */,
+				A62E354B17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png */,
 				A62E351A1737F8D600BA8910 /* bootcamp */,
 				A62E35131737F8D600BA8910 /* Frameworks */,
 				A62E35111737F8D600BA8910 /* Products */,
@@ -97,6 +106,8 @@
 				A62E35351737F8D600BA8910 /* DetailViewController.h */,
 				A62E35361737F8D600BA8910 /* DetailViewController.m */,
 				A62E351B1737F8D600BA8910 /* Supporting Files */,
+				A62E3545173814DA00BA8910 /* ViewController.h */,
+				A62E3546173814DA00BA8910 /* ViewController.m */,
 			);
 			path = bootcamp;
 			sourceTree = "<group>";
@@ -172,6 +183,8 @@
 				A62E352B1737F8D600BA8910 /* Default-568h@2x.png in Resources */,
 				A62E352E1737F8D600BA8910 /* MainStoryboard_iPhone.storyboard in Resources */,
 				A62E35311737F8D600BA8910 /* MainStoryboard_iPad.storyboard in Resources */,
+				A62E354C17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png in Resources */,
+				A62E354E17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +199,7 @@
 				A62E35251737F8D600BA8910 /* AppDelegate.m in Sources */,
 				A62E35341737F8D600BA8910 /* MasterViewController.m in Sources */,
 				A62E35371737F8D600BA8910 /* DetailViewController.m in Sources */,
+				A62E3548173814DB00BA8910 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,6 +326,7 @@
 				A62E353C1737F8D600BA8910 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
