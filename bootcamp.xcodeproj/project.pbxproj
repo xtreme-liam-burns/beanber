@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A6087530173D3ADD005CD986 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A608752F173D3ADD005CD986 /* AsyncImageView.m */; };
 		A62E35151737F8D600BA8910 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62E35141737F8D600BA8910 /* UIKit.framework */; };
 		A62E35171737F8D600BA8910 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62E35161737F8D600BA8910 /* Foundation.framework */; };
 		A62E35191737F8D600BA8910 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A62E35181737F8D600BA8910 /* CoreGraphics.framework */; };
@@ -23,11 +24,12 @@
 		A62E3548173814DB00BA8910 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A62E3546173814DA00BA8910 /* ViewController.m */; };
 		A62E354C17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = A62E354B17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png */; };
 		A62E354E17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png in Resources */ = {isa = PBXBuildFile; fileRef = A62E354D17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png */; };
-		A686267417399C8900F72794 /* AsyncImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A686267317399C8800F72794 /* AsyncImageView.m */; };
 		A68626781739A03100F72794 /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A68626771739A03100F72794 /* TweetCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A608752E173D3ADD005CD986 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncImageView.h; sourceTree = "<group>"; };
+		A608752F173D3ADD005CD986 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncImageView.m; sourceTree = "<group>"; };
 		A62E35101737F8D600BA8910 /* bootcamp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = bootcamp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A62E35141737F8D600BA8910 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A62E35161737F8D600BA8910 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -51,8 +53,6 @@
 		A62E3546173814DA00BA8910 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A62E354B17381E5900BA8910 /* rsz_justinbieberclubicon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_justinbieberclubicon_512x512.png; sourceTree = "<group>"; };
 		A62E354D17381E8800BA8910 /* rsz_1justinbieberclubicon_512x512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rsz_1justinbieberclubicon_512x512.png; sourceTree = "<group>"; };
-		A686267217399C8800F72794 /* AsyncImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AsyncImageView.h; path = "../../../Downloads/AsyncImageView-master/AsyncImageView/AsyncImageView.h"; sourceTree = "<group>"; };
-		A686267317399C8800F72794 /* AsyncImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AsyncImageView.m; path = "../../../Downloads/AsyncImageView-master/AsyncImageView/AsyncImageView.m"; sourceTree = "<group>"; };
 		A68626761739A03100F72794 /* TweetCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetCell.h; sourceTree = "<group>"; };
 		A68626771739A03100F72794 /* TweetCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -111,8 +111,8 @@
 				A62E352F1737F8D600BA8910 /* MainStoryboard_iPad.storyboard */,
 				A62E35321737F8D600BA8910 /* MasterViewController.h */,
 				A62E35331737F8D600BA8910 /* MasterViewController.m */,
-				A686267217399C8800F72794 /* AsyncImageView.h */,
-				A686267317399C8800F72794 /* AsyncImageView.m */,
+				A608752E173D3ADD005CD986 /* AsyncImageView.h */,
+				A608752F173D3ADD005CD986 /* AsyncImageView.m */,
 				A62E35351737F8D600BA8910 /* DetailViewController.h */,
 				A62E35361737F8D600BA8910 /* DetailViewController.m */,
 				A62E351B1737F8D600BA8910 /* Supporting Files */,
@@ -210,8 +210,8 @@
 				A62E35341737F8D600BA8910 /* MasterViewController.m in Sources */,
 				A62E35371737F8D600BA8910 /* DetailViewController.m in Sources */,
 				A62E3548173814DB00BA8910 /* ViewController.m in Sources */,
-				A686267417399C8900F72794 /* AsyncImageView.m in Sources */,
 				A68626781739A03100F72794 /* TweetCell.m in Sources */,
+				A6087530173D3ADD005CD986 /* AsyncImageView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
