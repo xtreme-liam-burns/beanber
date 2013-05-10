@@ -10,12 +10,22 @@
 
 #import "DetailViewController.h"
 
+#import "AsyncImageView.h"
+
+#import "TweetCell.h"
+
 @interface MasterViewController () {
     NSMutableArray *_objects;
 }
+@property NSMutableArray * tweetArray;
+@property BOOL donescroll;
+
 @end
 
+
+
 @implementation MasterViewController
+
 
 - (void)awakeFromNib
 {
@@ -28,10 +38,17 @@
 int first=0;
 - (void)viewDidLoad
 {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(handleAsyncImageLoadDidFinish:)
+                                                 name:@"AsyncImageLoadDidFinish"
+                                               object:nil];
+    self.donescroll =  YES;
+    self.tweetArray = [[NSMutableArray alloc] init];
     [super viewDidLoad];
     [self fetchTweets];
     if(first==0){
         self.hashtag=@"bieber";
+        self.page=1;
         first++;
     }
 	// Do any additional setup after loading the view, typically from a nib.
@@ -70,7 +87,7 @@ int first=0;
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
@@ -125,17 +142,27 @@ int first=0;
 - (void)fetchTweets
 {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSString *string=@"https://search.twitter.com/search.json?q=%23";
-        NSString *url = [string stringByAppendingString:self.hashtag];
+        NSString *string=@"https://search.twitter.com/search.json?rpp=15&q=%23";
+        NSString *url = [[[string stringByAppendingString:self.hashtag] stringByAppendingString:@"&page="] stringByAppendingString:[NSString stringWithFormat:@"%d",self.page]];
         NSData* data = [NSData dataWithContentsOfURL:
                         [NSURL URLWithString:url]];
         
         NSError* error;
         
+
         JSON = [NSJSONSerialization JSONObjectWithData:data
                                                  options:kNilOptions
                                                    error:&error];
-        tweets = [JSON objectForKey:@"results"];
+        
+        NSArray *temp=[JSON objectForKey:@"results"];
+        if(!tweets) {
+            tweets=[[NSMutableArray alloc] initWithArray:temp];
+        }
+        else {
+            [tweets addObjectsFromArray:temp];
+        }
+        
+       // tweets = [JSON objectForKey:@"results"];
         
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.tableView reloadData];
@@ -148,28 +175,74 @@ int first=0;
     return tweets.count;
 }
 
+int indexer=0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    int tmp=indexPath.row;
     static NSString *CellIdentifier = @"TweetCell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    TweetCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[TweetCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
     NSDictionary *tweet = [tweets objectAtIndex:indexPath.row];
     NSString *text = [tweet objectForKey:@"text"];
     NSString *name = [tweet objectForKey:@"from_user"];
-    
-    cell.textLabel.text = text;
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"by %@", name];
-    
+    cell.index=indexer;
+
+    cell.url=[tweet objectForKey:@"profile_image_url"];
+    AsyncImageView *temp = ((AsyncImageView *)cell.imageView);
+    temp.imageURL = [NSURL URLWithString:cell.url];
+    cell.tweetLabel.text = text;
+    cell.nameLabel.text = [NSString stringWithFormat:@"by %@", name];
+    cell.visible = NO;
+    [cell update];
+
+    [self.tweetArray insertObject:cell atIndex:indexPath.row];
+    indexer++;
     return cell;
+
 }
 
 - (void)childViewControllerDidFinish:(NSString*)text {
     self.hashtag=text;
+    tweets=nil;
+    self.page=1;
+    self.tweetArray=nil;
     [self fetchTweets];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)handleAsyncImageLoadDidFinish:(NSNotification *)note  {
+    [self.tableView reloadData];
+
+}
+
+-(BOOL)isRowVisible:(TweetCell*)cell {
+    NSArray *indexes = [self.tableView indexPathsForVisibleRows];
+    for (NSIndexPath *index in indexes) {
+        if (index.row == cell.index) {
+            return YES;
+        }
+    }
+    
+    return NO;
+}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView_
+{
+    CGFloat actualPosition = scrollView_.contentOffset.y;
+    CGFloat contentHeight = scrollView_.contentSize.height-450-5*self.page;
+    if (actualPosition >= contentHeight) {
+        if(self.donescroll) {
+            self.donescroll=NO;
+            self.page++;
+            [self fetchTweets];
+        }
+    }
+}
+
+- (void) scrollViewDidEndDecelerating:(UIScrollView *)scrollView_ {
+    self.donescroll = YES;
 }
 @end

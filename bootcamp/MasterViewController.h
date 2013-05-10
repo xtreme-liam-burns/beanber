@@ -12,13 +12,16 @@
 @class DetailViewController;
 
 @interface MasterViewController : UITableViewController <ChildViewControllerDelegate> {
-    NSArray *tweets;
+    NSMutableArray *tweets;
     NSDictionary *JSON;
     IBOutlet UIBarButtonItem *butt;
 }
 @property (strong, nonatomic) DetailViewController *detailViewController;
 
+@property NSMutableArray *tweets;
+
 @property (strong, nonatomic)  NSMutableString *hashtag;
+@property (nonatomic)  NSInteger page;
 
 
 - (void)fetchTweets;
